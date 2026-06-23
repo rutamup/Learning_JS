@@ -33,18 +33,25 @@
     >
       Scissor
     </button>
-    <button onclick = "ResetScore();">
+
+    <p class = 'js-score'></p>
+    <button onclick = "ResetScore();   updateScoreElement();">
       Reset
     </button>
 
     <script>
+        let computmove = "";
+      let result = "";
+    
       const score = {
         wins: 0,
         losses: 0,
         ties: 0,
       };
-      let computmove = "";
-      let result = "";
+                      updateScoreElement();
+
+     
+    
 
       function pickMove() {
         const randomNum = Math.random();
@@ -99,7 +106,13 @@
          if(result === 'Tie'){
           score.ties += 1
         }
-          alert(`You picked ${playermove}. Computer picked ${computmove}. ${result} The current score is - wins: ${score.wins} losses: ${score.losses} ties: ${score.ties}`)
+        alert(`You picked ${playermove}. Computer picked ${computmove}.`)
+                updateScoreElement(playermove);
+      }
+      function updateScoreElement(playermove){
+                
+                 document.querySelector('.js-score').innerHTML = `${result} The current score is - wins: ${score.wins} losses: ${score.losses} ties: ${score.ties}`
+
       }
 
       function ResetScore(){
