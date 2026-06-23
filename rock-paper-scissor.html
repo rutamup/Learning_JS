@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html>
   <head>
     <title>Rock Paper Scissor</title>
@@ -6,62 +7,65 @@
 
   <body>
     <style>
-      body{
-        background-color: rgb(25,25,25);
-        color:white;
-        font-family:Arial;
+      body {
+        background-color: rgb(25, 25, 25);
 
+        color: white;
+
+        font-family: Arial;
       }
-      
     </style>
-    
+
     <p>Rock Paper Scissor</p>
+
     <button
       onclick="
         pickMove();
-        Results('rock');
 
+        Results('rock');
       "
     >
       Rock
     </button>
+
     <button
       onclick="
         pickMove();
-        Results('paper');
 
+        Results('paper');
       "
     >
       Paper
     </button>
+
     <button
       onclick="
         pickMove();
-        Results('scissor');
 
+        Results('scissor');
       "
     >
       Scissor
     </button>
 
-    <p class = 'js-score'></p>
-    <button onclick = "ResetScore();">
-      Reset
-    </button>
+    <p class="js-score"></p>
+
+    <button onclick="ResetScore();">Reset</button>
 
     <script>
-        let computmove = "";
+      let computmove = "";
+
       let result = "";
-    
+
       const score = {
         wins: 0,
+
         losses: 0,
+
         ties: 0,
       };
-                      updateScoreElement();
 
-     
-    
+      updateScoreElement();
 
       function pickMove() {
         const randomNum = Math.random();
@@ -73,6 +77,7 @@
         } else {
           computmove = "scissor";
         }
+
         console.log(computmove);
       }
 
@@ -107,28 +112,36 @@
           }
         }
 
-        if(result === 'you win'){
-          score.wins += 1
+        if (result === "you win") {
+          score.wins += 1;
         }
-         if(result === 'you lose'){
-          score.losses += 1
+
+        if (result === "you lose") {
+          score.losses += 1;
         }
-         if(result === 'Tie'){
-          score.ties += 1
+
+        if (result === "Tie") {
+          score.ties += 1;
         }
-        alert(`You picked ${playermove}. Computer picked ${computmove}.`)
-                updateScoreElement(playermove);
+
+        alert(`You picked ${playermove}. Computer picked ${computmove}.`);
+
+        updateScoreElement(playermove);
       }
-      function updateScoreElement(playermove){
-                
-                 document.querySelector('.js-score').innerHTML = `${result} The current score is - wins: ${score.wins} losses: ${score.losses} ties: ${score.ties}`
+
+      function updateScoreElement(playermove) {
+        document.querySelector(".js-score").innerHTML =
+          `${result} The current score is - wins: ${score.wins} losses: ${score.losses} ties: ${score.ties}`;
 
       }
 
-      function ResetScore(){
+      function ResetScore() {
         score.losses = 0;
-        score.wins =0;
-        score.ties= 0;
+
+        score.wins = 0;
+
+        score.ties = 0;
+        updateScoreElement();
       }
     </script>
   </body>
