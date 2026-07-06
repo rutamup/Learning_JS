@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title> 
+      Objects
+    </title>
+</head>
+
+
+<body>
+    <script>   
+     const product = {
+        name:'sock',
+        price:1090
+
+     };
+     console.log(product)
+
+     console.log(JSON.stringify(product))
+     const JSONstring = JSON.stringify(product)
+     console.log(JSON.parse(JSONstring))
+
+     console.log('hello'.toUpperCase());
+
+
+     const obj4={
+        message: "Good Job!",
+        price: "499"
+     };
+     const{message} = obj4
+     console.log(message);
+     const obj5 ={
+        message:message,
+        method(){
+            console.log('my     method')
+        }
+     }
+     console.log(obj5.message)
+     obj5.method();
+    </script>
+</body>
+</html>

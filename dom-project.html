@@ -5,7 +5,7 @@
   </head>
 
   <body>
-    <p>Youtube Subscribe Button</p>
+    <p class ='whole'> <p>Youtube Subscribe Button</p>
 
     <button
       onclick="
@@ -13,8 +13,11 @@
 
         if (buttonElement.innerHTML === 'Subscribe') {
           document.querySelector('.js-sub-button').innerHTML = 'Subscribed';
+          buttonElement.classList.add('is-subscribed');
         } else {
           document.querySelector('.js-sub-button').innerHTML = 'Subscribe';
+          buttonElement.classList.remove('is-subscribed');
+
         }
       "
       class="js-sub-button"
@@ -25,20 +28,20 @@
     <input
       placeholder="Cost of order"
       class="js-cost-input"
-      onkeydown=" HandleCostKeyDown();
-      
-      "
+      onkeydown="HandleCostKeyDown(event)"
     />
-    <button onclick="calculateTotal()">Calculate</button>
-    <p class="js-total-cost"></p>
+    <button onclick="calculateTotal()" class = "calculate-button">Calculate</button>
+    <p class="js-total-cost"></p></p>
+   
+
 
     <script>
-        function HandleCostKeyDown(){
-  console.log(event.key);
-        if (event.key === 'Enter') {
+      function HandleCostKeyDown(event) {
+        console.log(event.key);
+        if (event.key === "Enter") {
           calculateTotal();
         }
-        }
+      }
       function calculateTotal() {
         const inputElement = document.querySelector(".js-cost-input");
         let cost = Number(inputElement.value);
@@ -48,5 +51,50 @@
         document.querySelector(".js-total-cost").innerHTML = `$${cost}`;
       }
     </script>
+    <style>
+        .js-sub-button{
+            border:none;
+            background-color:black;
+            color: white;
+            border-radius: 100px;
+            padding-top:10px;
+            padding-bottom:10px;
+             padding-left:10px;
+              padding-right:10px;
+              font-weight:bold;
+            cursor:pointer;
+            margin-bottom:30px;
+        }
+        .is-subscribed{
+   border:none;
+            background-color:rgb(240,240,240);
+            color: black;
+            border-radius: 100px;
+            padding-top:10px;
+            padding-bottom:10px;
+             padding-left:10px;
+              padding-right:10px;
+              font-weight:bold;
+            cursor:pointer;
+                 margin-bottom:30px;
+
+
+        }
+        body{
+            background-color: rgb(100,100,100);
+        }
+        .whole{
+           font-family: Arial;
+           background-color:rgb(10,10,10);
+        }
+        .calculate-button{
+            background-color:green;
+            color:white;
+            border:none;    
+            padding:10 15px;
+            font-size:15px;
+        }
+
+    </style>
   </body>
 </html>
